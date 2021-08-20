@@ -3,14 +3,23 @@ $(document).ready(function () {
   var counterUp = $(".counter-up"); //Объявление кнопки увеличения этажа//
   var counterDown = $(".counter-down"); //Объявление кнопки уменьшения этажа//
   var floorPath = $(".home-image path"); //номер этажа в SVG//
-  
-  // Объявление функции, которая выделяет этаж при наведении мышью на него// 
+  var modal = $(".modal");
+  var modalCloseButton = $(".modal-close-button");
+  var viewFlatsButton = $(".view-flats");
+  // Объявление функции, которая выделяет этаж при наведении мышью на него//
   floorPath.on("mouseover", function () {
     floorPath.removeClass("current-floor"); //Удаляем активный класс у этажей, чтобы выделение не оставалось//
     currentFloor = $(this).attr("data-floor"); //Получаеем значение текущего этажа//
     $(".counter").text(currentFloor);  //Записываем значение этажа в счетчик справа//
 
   });
+
+  floorPath.on('click', toggleModal);
+  
+  modalCloseButton.on('click', toggleModal);
+  
+  viewFlatsButton.on('click', toggleModal);
+
   // Отслеживаем клик по кнопке вверх//
   counterUp.on("click", function () {
     if (currentFloor < 18) {
@@ -38,4 +47,7 @@ $(document).ready(function () {
       $(`[data-floor=${usCurrentFloor}]`).toggleClass("current-floor"); //Подсветка текущего этажа//
     }
   });
+  function toggleModal() {
+    modal.toggleClass('is-open');
+  }
 });
