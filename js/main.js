@@ -6,6 +6,10 @@ $(document).ready(function () {
   var modal = $(".modal");
   var modalCloseButton = $(".modal-close-button");
   var viewFlatsButton = $(".view-flats");
+  var currentFlats = 1;
+  var flatsPath = $(".flats path");
+  var flatsPathItem = $(".flat-item a");
+
   // Объявление функции, которая выделяет этаж при наведении мышью на него//
   floorPath.on("mouseover", function () {
     floorPath.removeClass("current-floor"); //Удаляем активный класс у этажей, чтобы выделение не оставалось//
@@ -14,6 +18,25 @@ $(document).ready(function () {
 
   });
 
+  flatsPath.on("mouseover", function () {
+    currentFlats = $(this).attr("data-flats");
+    flatsPath.removeClass("current-flats");
+    flatsPathItem.removeClass("current-flats-item");
+    $(`[data-flats=${currentFlats}]`).toggleClass("current-flats");
+    $(`[data-item=${currentFlats}]`).toggleClass("current-flats-item");
+
+  })
+
+  flatsPathItem.on("mouseover", function () {
+    currentFlats = $(this).attr("data-item");
+    flatsPath.removeClass("current-flats");
+    flatsPathItem.removeClass("current-flats-item");
+    $(`[data-flats=${currentFlats}]`).toggleClass("current-flats");
+    $(`[data-item=${currentFlats}]`).toggleClass("current-flats-item");
+
+  })
+
+  
   floorPath.on('click', toggleModal);
   
   modalCloseButton.on('click', toggleModal);
