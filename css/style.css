@@ -10,9 +10,10 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   font-family: "Roboto", sans-serif;
-}
+   }
 .header {
   background-color: #635854;
   padding-top: 12px;
@@ -20,7 +21,7 @@ body {
   border-bottom: 4px solid #3596f5;
 }
 .navbar {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -56,10 +57,11 @@ body {
   color: white;
 }
 .main {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: auto;
   padding-top: 54px;
   display: flex;
+  height: 100%;
 }
 .main-info {
   flex-grow: 1;
@@ -79,6 +81,8 @@ body {
 path.current-floor {
   opacity: 1;
 }
+
+
 .counter-group {
   display: flex;
   flex-direction: column;
@@ -192,17 +196,20 @@ path.current-floor {
   line-height: 19px;
   text-decoration: none;
 }
-.flat-link:hover {
-  color: #3596f5;
-  text-decoration: underline;
 
-}
 .flats path {
   opacity: 0;
   cursor: pointer;
 }
-.flats path:hover{
-  opacity: 1;
+
+
+a.current-flats-item {
+  color: #3596F5;
+  text-decoration: underline;
+  cursor: pointer;
+}
+path.current-flats {
+opacity: 1;
 }
 .modal-alert {
   font-style: italic;
